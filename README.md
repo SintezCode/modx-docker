@@ -4,7 +4,7 @@ MODX Docker Project by Pixmill
 Download project from Gitlab:
 
 ```
-git clone https://github.com/bezumkin/modx-docker.git ./NewProject
+git clone https://github.com/SintezCode/modx-docker.git ./NewProject
 ```
 
 ### Prepare Docker
