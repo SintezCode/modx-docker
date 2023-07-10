@@ -28,6 +28,6 @@ cp -r ../modx/_data ../dist/
 cp -r ../modx/_backup ../dist/
 cp -r ../modx/.gitify ../dist/
 
-docker run -it --rm --name $TMP --volume $ASSETS:/assets --volume $MODX:/modx --workdir /assets $IMAGE sh -c "yarn && yarn build"
+docker run -t --rm --name $TMP --volume $ASSETS:/assets --volume $MODX:/modx --workdir /assets $IMAGE sh -c "yarn && yarn build"
 cp -r ../modx/assets/app ../dist/assets/
 # cp ../core/connector.php ../dist/assets/app/
