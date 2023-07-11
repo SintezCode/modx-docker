@@ -26,7 +26,8 @@ Prepare environment variables:
 cp .env.dist .env
 ```
 
-Don't forget to specify unique project name in `COMPOSE_PROJECT_NAME` variable.
+Don't forget to specify unique project name in `COMPOSE_PROJECT_NAME` variable
+and local hostname in `DOMAIN` variable (you need manually add your local domain to hosts file)
 
 And run containers:
 ```
@@ -46,7 +47,7 @@ This will install MODX `2.8.4-pl`, default packages and create special `Assets` 
 
 ### How to develop
 
-Open http://127.0.0.1:8080 - you will see the MODX website. 
+Open your local domain - you will see the MODX website. 
 
 Your frontend assets are in the `NewProject/assets` directory, handled by Webpack in development mode. 
 When you change files, frontend will rebuild assets and reload. 
