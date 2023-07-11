@@ -1,4 +1,5 @@
 import path from 'path'
+import 'dotenv/config'
 import AssetsManifest from 'webpack-assets-manifest'
 import TerserJSPlugin from 'terser-webpack-plugin'
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
@@ -6,30 +7,33 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import CopyPlugin from 'copy-webpack-plugin'
 import {CleanWebpackPlugin} from 'clean-webpack-plugin'
 
+console.log(process.env);
+
 const source = './src/'
 const dist = '../modx/assets/app'
 
 export default (env, options) => {
+  const isProduction=options.mode === 'production';
   return {
     entry: path.resolve(source, 'index.js'),
     output: {
       path: path.resolve(dist),
-      chunkFilename: options.mode == 'production'
+      chunkFilename: isProduction
         ? 'js/[name].[contenthash:8].min.js'
         : 'js/[name].js',
-      filename: options.mode == 'production'
+      filename: isProduction
         ? 'js/[name].[contenthash:8].min.js'
         : 'js/[name].js'
     },
     target: 'web',
     optimization: {
-      minimize: options.mode == 'production',
+      minimize: isProduction,
       minimizer: [
         new TerserJSPlugin({extractComments: false}),
         new CssMinimizerPlugin()
       ],
       splitChunks: {
-        chunks: options.mode == 'production'
+        chunks: isProduction
           ? 'all'
           : 'async',
         maxInitialRequests: Infinity,
@@ -75,7 +79,7 @@ export default (env, options) => {
               ? `fonts/${url}`
               : `images/${url}`
           },
-          name: options.mode == 'production'
+          name: isProduction
             ? '[name].[contenthash:8].[ext]'
             : '[name].[ext]',
         }
@@ -85,7 +89,7 @@ export default (env, options) => {
       new CleanWebpackPlugin({
         verbose: false,
         cleanStaleWebpackAssets: true,
-        // dry: options.mode !== 'production',
+        // dry: isProduction,
       }),
       new AssetsManifest({
         output: path.resolve(dist, 'manifest.json'),
@@ -98,10 +102,10 @@ export default (env, options) => {
         ],
       }),
       new MiniCssExtractPlugin({
-        chunkFilename: options.mode == 'production'
+        chunkFilename: isProduction
           ? 'css/[name].[contenthash:8].min.css'
           : 'css/[name].css',
-        filename: options.mode == 'production'
+        filename: isProduction
           ? 'css/[name].[contenthash:8].min.css'
           : 'css/[name].css',
       }),
@@ -112,7 +116,7 @@ export default (env, options) => {
         watch: true,
       },
       port: 9000,
-      allowedHosts:'docker.local',
+      allowedHosts:process.env.DOMAIN,
       devMiddleware: {
         writeToDisk: true,
       },
