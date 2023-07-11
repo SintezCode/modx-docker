@@ -112,7 +112,7 @@ export default (env, options) => {
         watch: true,
       },
       port: 9000,
-      // host: '127.0.0.1',
+      allowedHosts:'docker.local',
       devMiddleware: {
         writeToDisk: true,
       },

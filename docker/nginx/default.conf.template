@@ -1,5 +1,4 @@
 server {
-    listen 80 default;
     listen ${NGINX_PORT};
     charset utf-8;
     index index.php;
