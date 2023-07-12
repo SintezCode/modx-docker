@@ -7,10 +7,8 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import CopyPlugin from 'copy-webpack-plugin'
 import {CleanWebpackPlugin} from 'clean-webpack-plugin'
 
-console.log(process.env);
-
 const source = './src/'
-const dist = '../modx/assets/app'
+const dist = `../modx/${process.env.MODX_PUBLIC_DIR}assets/app`
 
 export default (env, options) => {
   const isProduction=options.mode === 'production';
