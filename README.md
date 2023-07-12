@@ -43,7 +43,7 @@ If you have run this project for the first time, you need to install MODX with d
 ./modx-install.sh
 ```
 
-This will install MODX `2.8.4-pl`, default packages and create special `Assets` plugin. 
+This will install MODX `3.0.3-pl`, default packages and create special `Assets` plugin. 
 
 ### How to develop
 
