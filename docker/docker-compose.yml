@@ -21,14 +21,14 @@ services:
       - PUBLIC_DIR=${MODX_PUBLIC_DIR}
     volumes:
       - ./nginx:/etc/nginx/templates
-      - ./log/nginx:/var/log/nginxdocker container ls
+      - ./log/nginx:/var/log/nginx
       - ../modx:/modx
     ports:
       - ${NGINX_PORT}:80
     depends_on:
       - php-fpm
       - mariadb
-    working_dir: /modx/
+    working_dir: /modx
 
   php-fpm:
     build:
