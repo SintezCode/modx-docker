@@ -5,6 +5,7 @@ NAME=${COMPOSE_PROJECT_NAME}-php-fpm
 
 docker exec -t $(docker ps --filter name=$NAME -q) bash -c "gitify modx:download $MODX_VERSION"
 
+docker exec -t $(docker ps --filter name=$NAME -q) bash -c "mkdir -p /modx/${MODX_PUBLIC_DIR}"
 docker exec -t $(docker ps --filter name=$NAME -q) bash -c "mv /modx/manager/ /modx/${MODX_PUBLIC_DIR}${MODX_MGR_DIR}"
 docker exec -t $(docker ps --filter name=$NAME -q) bash -c "mv /modx/connectors/ /modx/${MODX_PUBLIC_DIR}${MODX_CONNECTORS_DIR}"
 docker exec -t $(docker ps --filter name=$NAME -q) bash -c "mv /modx/config.core.php /modx/${MODX_PUBLIC_DIR}"
