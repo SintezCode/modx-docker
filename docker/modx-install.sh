@@ -12,6 +12,20 @@ docker exec -t $(docker ps --filter name=$NAME -q) bash -c "mv /modx/config.core
 docker exec -t $(docker ps --filter name=$NAME -q) bash -c "mv /modx/ht.access /modx/${MODX_PUBLIC_DIR}"
 docker exec -t $(docker ps --filter name=$NAME -q) bash -c "mv /modx/index.php /modx/${MODX_PUBLIC_DIR}"
 
+if [ $MODSTORE_API_KEY ]; then
+    printf $MODSTORE_API_KEY > ../modx/.modstore.pro.key
+fi
+
+if [ $YANDEX_MAP_API_KEY ]; then
+    mkdir -p "../modx/_data/system_settings/"
+    printf "key: yandex_coords_tv_api_key
+value: $YANDEX_MAP_API_KEY
+namespace: yandexcoordstv
+area: api" > ../modx/_data/system_settings/yandex-coords-tv-api-key.yaml
+fi
+
+
+
 docker exec -t $(docker ps --filter name=$NAME -q) bash -c "php setup/cli-install.php --database_server=mariadb \
   --database=$MARIADB_DATABASE --database_user=$MARIADB_USERNAME --database_password=$MARIADB_PASSWORD \
   --table_prefix=$MODX_TABLE_PREFIX --language=$MODX_LANGUAGE --cmsadmin=$MODX_ADMIN_LOGIN --cmspassword=$MODX_ADMIN_PWD --cmsadminemail=$MODX_ADMIN_EMAIL \
