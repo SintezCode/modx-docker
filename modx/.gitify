@@ -111,6 +111,25 @@ packages:
         service_url: 'https://rest.modx.com/extras/'
         description: 'The official MODX transport provider for 3rd party components.'
         packages:
-            - ace
-            - pdotools
-
+            - ace-1.9.3-pl
+            - collections-4.0.0-pl
+            - colorpicker-2.0.5-pl
+            - filetranslit-0.1.2-pl2
+            - formit-5.0.1-pl
+            - googlesitemap-2.1.2-pl
+            - lastmodified-1.1.1-pl
+            - migx-3.0.0-alpha5
+            - mixedimage-2.1.0-pl
+            - modalconsole-1.1.2-beta
+            - moddevtools-1.3.6-pl
+            - pdotools-3.0.2-pl
+            - phpthumbon-1.3.1-pl
+            - resizeimageonupload-1.1.2-rc1
+            - tinymcerte-2.0.9-pl
+            - translit-1.0.0-beta
+    modstore.pro:
+        service_url: 'https://modstore.pro/extras/'
+        username: unarmedf@gmail.com
+        api_key: .modstore.pro.key
+        packages:
+            - yandexcoordstv-1.0.2-beta
