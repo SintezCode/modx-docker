@@ -25,4 +25,5 @@
 /modx/www/
 /modx/.modstore.pro.key
 /modx/_backup/
-/modx/_data/system_settings/yandex-coords-tv-api-key.yaml
+/modx/vendor/
+/modx/_data/packages_settings/yandex-coords-tv-api-key.yaml
