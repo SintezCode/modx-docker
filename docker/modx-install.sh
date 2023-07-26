@@ -16,15 +16,13 @@ if [ $MODSTORE_API_KEY ]; then
     printf $MODSTORE_API_KEY > ../modx/.modstore.pro.key
 fi
 
-: '
-if [ $YANDEX_MAP_API_KEY ]; thenA
-    mkdir -p "../modx/_data/system_settings/"
+if [ $YANDEX_MAP_API_KEY ]; then
+    mkdir -p "../modx/_data/packages_settings/"
     printf "key: yandex_coords_tv_api_key
 value: $YANDEX_MAP_API_KEY
 namespace: yandexcoordstv
-area: api" > ../modx/_data/system_settings/yandex-coords-tv-api-key.yaml
+area: api" > ../modx/_data/packages_settings/yandex-coords-tv-api-key.yaml
 fi
-'
 
 docker exec -t $(docker ps --filter name=$NAME -q) bash -c "php setup/cli-install.php --database_server=mariadb \
   --database=$MARIADB_DATABASE --database_user=$MARIADB_USERNAME --database_password=$MARIADB_PASSWORD \

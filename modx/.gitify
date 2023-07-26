@@ -61,6 +61,13 @@ data:
         primary: key
         exclude_keys:
             - editedon
+    packages_settings:
+        class: modSystemSetting
+        primary: key
+        exclude_keys:
+            - editedon
+        where:
+            namespace: yandexcoordstv
     extension_packages:
         class: modExtensionPackage
         primary: namespace
