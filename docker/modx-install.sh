@@ -17,7 +17,7 @@ if [ $MODSTORE_API_KEY ]; then
 fi
 
 : '
-if [ $YANDEX_MAP_API_KEY ]; then
+if [ $YANDEX_MAP_API_KEY ]; thenA
     mkdir -p "../modx/_data/system_settings/"
     printf "key: yandex_coords_tv_api_key
 value: $YANDEX_MAP_API_KEY
@@ -38,5 +38,7 @@ docker exec -t $(docker ps --filter name=$NAME -q) bash -c "cp /modx/${MODX_PUBL
 ./modx-restore.sh
 
 docker exec -t $(docker ps --filter name=$NAME -q) bash -c "gitify package:install --all"
+
+docker exec -t $(docker ps --filter name=$NAME -q) bash -c "php post-install.php"
 
 $SHELL

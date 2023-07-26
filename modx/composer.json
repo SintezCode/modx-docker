@@ -1,0 +1,14 @@
+{
+  "name": "sintezcode/modx-docker",
+  "description": "description",
+  "minimum-stability": "stable",
+  "authors": [
+    {
+      "name": "SintezCode",
+      "email": "unarmedf@gmail.com"
+    }
+  ],
+  "require": {
+    "symfony/dotenv": "^5.4"
+  }
+}
