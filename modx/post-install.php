@@ -12,5 +12,12 @@ require_once(MODX_BASE_PATH.'index.php');
 $modx= new modX();
 $modx->initialize('web');
 
+if($_ENV['YANDEX_MAP_API_KEY']){
+    $setting = $modx->getObject('modSystemSetting', 'yandex_coords_tv_api_key');
+    if($setting){
+        $setting->set('value',$_ENV['YANDEX_MAP_API_KEY']);
+        $setting->save();
+    }
+}
 
 
